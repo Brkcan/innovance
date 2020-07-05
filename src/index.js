@@ -5,11 +5,23 @@ import './bootstrap-override.scss';
 import './i18n';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {Provider} from 'react-redux';
+import configureStore from './redux/configureStore';
+
+const loggedInState = {
+  isLoggedIn : true,
+  username: 'user1',
+  displayName: 'display1',
+  password: 'P4ssword',
+}
+
+
+const store = configureStore();
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 

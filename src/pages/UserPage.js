@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ProfileCard from '../components/ProfileCard';
 
-const UserPage = () => {
+
+const UserPage = (props) => {
 
   return(
     <div className="container">
-      <Link to="/">HomePage </Link>
+      <ProfileCard username={props.username}/>
     </div>
   )
 }
