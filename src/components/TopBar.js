@@ -5,13 +5,12 @@ import { connect } from 'react-redux';
 import { logoutSuccess } from '../redux/authAction';
 import { loginSuccess } from '../redux/authAction';
 
-class TopBar extends React.Component {
+const TopBar = props => {
 
-  render(){
-    console.log(this.props);
+    // console.log(this.props);
 
-    const {t} = this.props;
-    const  { isLoggedIn,username, onLogoutSuccess ,onLoginSuccess} = this.props;
+    const {t} = props;
+    const  { isLoggedIn,username, onLogoutSuccess ,onLoginSuccess} = props;
 
 
     let links = (
@@ -28,6 +27,11 @@ class TopBar extends React.Component {
     if(isLoggedIn) {
       links = (
         <ul className="navbar-nav ml-auto">
+          <li>
+            <Link className="nav-link" to="/form">
+              {t('Click To Form')}
+            </Link>
+          </li>
           <li>
             <Link className="nav-link" to={`/user/${username}`}>
               {username}
@@ -47,12 +51,13 @@ class TopBar extends React.Component {
           <Link className="navbar-brand" to="/">
             INNOVANCE
           </Link>
+
           {links}
         </nav>
       </div>
     )
   }
-}
+
 const TopBarWithTranslation = withTranslation()(TopBar);
 const mapStateToProps = (store) => {
   return {

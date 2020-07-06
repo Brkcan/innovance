@@ -1,11 +1,12 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 const ProfileCard = (props) => {
     const pathUsername = props.match.params.username;
     const loggedInUsername = props.username;
     let message = "we cannot edit";
-    if( pathUsername === loggedInUsername){
+    if( pathUsername === props.loggedInUsername){
         message = "we can edit";
     }
   return (
@@ -14,5 +15,9 @@ const ProfileCard = (props) => {
     </div>
   )
 }
-
-export default withRouter(ProfileCard);
+const mapStateToProps = (store) => {
+  return {
+    loggedInUsername: store.username,
+  }
+}
+export default  connect(mapStateToProps)(withRouter(ProfileCard));

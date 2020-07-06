@@ -1,3 +1,4 @@
+import {LOGOUT_SUCCESS, LOGIN_SUCCESS} from './Constants';
 
 const loggedInState = {
   isLoggedIn : true,
@@ -13,10 +14,10 @@ const defaultState = {
 }
 
 const authReducer = (state = { ...defaultState }, action) => {
-  if(action.type === 'logout-success'){
+  if(action.type === LOGOUT_SUCCESS){
     return defaultState;
   }
-  if(action.type === 'login-success'){
+  if(action.type === LOGIN_SUCCESS){
     return loggedInState;
   }
   return state;
